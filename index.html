@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>1000 Copias | Centro de Copiado e Impresión en Villa Martelli y Villa Devoto</title>
+    <meta name="description" content="1000 Copias: Líder en copiado e impresión en CABA y Zona Norte. Servicios de fotocopias color y B/N, planos CAD, ploteos y artículos de librería. Visítanos en Villa Martelli o Villa Devoto.">
+    <meta name="keywords" content="1000 Copias, centro de copiado, imprenta, fotocopias Villa Martelli, fotocopias Devoto, impresión planos, ploteos, librería comercial">
+    <meta name="author" content="1000 Copias">
+    <link rel="canonical" href="https://1000copias.com.ar/">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="1000 Copias | Centro de Copiado e Impresión">
+    <meta property="og:description" content="Servicios integrales de copiado e impresión en dos locales estratégicos. Fotocopias color y B/N, planos, librería y más.">
+    <meta property="og:image" content="logo.png">
+    <meta property="og:url" content="https://1000copias.com.ar/">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --color-naranja: #e98c15;
+            --color-gris-oscuro: #2b2830;
+            --color-hueso: #f4f1ea;
+            --color-blanco: #ffffff;
+        }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Montserrat', sans-serif;
+            scroll-behavior: smooth;
+        }
+        body {
+            background-color: var(--color-hueso);
+            color: var(--color-gris-oscuro);
+            line-height: 1.6;
+        }
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+        header {
+            background-color: var(--color-hueso);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            transform: translateY(-100%);
+            transition: transform 0.4s ease-in-out;
+        }
+        header.scrolled {
+            transform: translateY(0);
+        }
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 15px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .logo {
+            height: 40px;
+        }
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+        nav a {
+            font-weight: 700;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            transition: color 0.3s;
+            color: var(--color-gris-oscuro);
+        }
+        nav a:hover {
+            color: var(--color-naranja);
+        }
+        section {
+            padding: 80px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        h2 {
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 40px;
+            color: var(--color-naranja);
+        }
+        .hero {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background-image: linear-gradient(rgba(43, 40, 48, 0.85), rgba(43, 40, 48, 0.85)), url('https://images.unsplash.com/photo-1568205612837-017257d2310a?q=80&w=1920&auto=format&fit=crop');
+            background-size: cover;
+            background-position: center;
+            text-align: center;
+            padding: 0 20px;
+            margin-top: 0;
+            max-width: 100%;
+        }
+        .hero-logo {
+            max-width: 90%;
+            width: 500px;
+            margin-bottom: 30px;
+            animation: scaleFadeIn 1s ease-out forwards;
+        }
+        .hero h1 {
+            color: var(--color-naranja);
+            font-size: 2rem;
+            margin-bottom: 15px;
+            opacity: 0;
+            animation: slideUp 0.8s ease-out 0.5s forwards;
+        }
+        .hero p {
+            font-size: 1.2rem;
+            color: var(--color-hueso);
+            max-width: 800px;
+            margin: 0 auto 30px;
+            opacity: 0;
+            animation: slideUp 0.8s ease-out 0.7s forwards;
+        }
+        .hero .btn {
+            opacity: 0;
+            animation: slideUp 0.8s ease-out 0.9s forwards;
+        }
+        @keyframes scaleFadeIn {
+            from { transform: scale(0.8); opacity: 0; }
+            to { transform: scale(1); opacity: 1; }
+        }
+        @keyframes slideUp {
+            from { transform: translateY(30px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+        .fade-up {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+        .fade-up.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .btn {
+            background-color: var(--color-naranja);
+            color: var(--color-gris-oscuro);
+            padding: 15px 35px;
+            border-radius: 30px;
+            font-weight: 700;
+            font-size: 1.1rem;
+            display: inline-block;
+            transition: transform 0.3s, background-color 0.3s, color 0.3s;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border: 2px solid var(--color-naranja);
+        }
+        .btn:hover {
+            background-color: var(--color-gris-oscuro);
+            color: var(--color-naranja);
+            transform: scale(1.05);
+            border-color: var(--color-gris-oscuro);
+        }
+        .nosotros-content {
+            background-color: var(--color-blanco);
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            text-align: center;
+            border-bottom: 5px solid var(--color-naranja);
+        }
+        .nosotros-content p {
+            margin-bottom: 15px;
+            font-size: 1.1rem;
+        }
+        #servicios {
+            background-color: var(--color-gris-oscuro);
+            color: var(--color-hueso);
+            max-width: 100%;
+            padding: 100px 20px;
+        }
+        #servicios .container-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .servicios-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+        .servicio-card {
+            background-color: rgba(244, 241, 234, 0.05);
+            padding: 30px 20px;
+            border-radius: 10px;
+            text-align: center;
+            transition: transform 0.3s, box-shadow 0.3s, border-color 0.3s;
+            border: 1px solid rgba(233, 140, 21, 0.2);
+        }
+        .servicio-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+            border-color: var(--color-naranja);
+        }
+        .servicio-card h3 {
+            color: var(--color-naranja);
+            margin-bottom: 15px;
+            font-size: 1.3rem;
+        }
+        .locales-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+        }
+        .local-card {
+            background-color: var(--color-blanco);
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            display: flex;
+            flex-direction: column;
+            border: 1px solid #ddd;
+        }
+        .local-img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+        }
+        .local-body {
+            padding: 30px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        .local-body h3 {
+            color: var(--color-naranja);
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+            border-bottom: 2px solid var(--color-hueso);
+            padding-bottom: 10px;
+        }
+        .local-body p {
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: var(--color-gris-oscuro);
+        }
+        .local-body p i {
+            color: var(--color-naranja);
+            font-size: 1.2rem;
+            width: 25px;
+            text-align: center;
+        }
+        .botones-contacto {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin: 20px 0;
+        }
+        .btn-social {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            padding: 12px 20px;
+            border-radius: 8px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            transition: all 0.3s ease;
+            background-color: var(--color-gris-oscuro);
+            color: var(--color-hueso);
+            font-size: 0.95rem;
+            border: 2px solid var(--color-gris-oscuro);
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        .btn-social i {
+            font-size: 1.3rem;
+        }
+        .btn-wa:hover {
+            background-color: #25D366;
+            border-color: #25D366;
+            color: white;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 12px rgba(37, 211, 102, 0.3);
+        }
+        .btn-ig:hover {
+            background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+            border-color: transparent;
+            color: white;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 12px rgba(220, 39, 67, 0.3);
+        }
+        .mapa-container {
+            width: 100%;
+            height: 200px;
+            border-radius: 10px;
+            overflow: hidden;
+            margin-top: auto;
+            border: 2px solid var(--color-hueso);
+        }
+        .mapa-container iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+        .btn-mapa {
+            display: block;
+            text-align: center;
+            background-color: var(--color-naranja);
+            color: var(--color-gris-oscuro);
+            padding: 15px;
+            border-radius: 8px;
+            font-weight: 700;
+            margin-top: 15px;
+            transition: background-color 0.3s, color 0.3s;
+            text-transform: uppercase;
+        }
+        .btn-mapa:hover {
+            background-color: var(--color-gris-oscuro);
+            color: var(--color-naranja);
+        }
+        footer {
+            background-color: var(--color-gris-oscuro);
+            color: var(--color-hueso);
+            text-align: center;
+            padding: 30px;
+            border-top: 5px solid var(--color-naranja);
+        }
+        @media (max-width: 768px) {
+            .nav-container {
+                flex-direction: column;
+                padding: 15px;
+                gap: 15px;
+            }
+            .nav-container nav ul {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 15px;
+            }
+            .hero-logo {
+                width: 300px;
+            }
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+            .hero p {
+                font-size: 1rem;
+            }
+            h2 {
+                font-size: 2rem;
+            }
+            section {
+                padding: 60px 15px;
+            }
+            #servicios {
+                padding: 60px 15px;
+            }
+            .nosotros-content {
+                padding: 25px 15px;
+            }
+            .locales-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="nav-container">
+            <a href="#">
+                <img src="logo.png" alt="1000 Copias Logo" class="logo" onerror="this.src='data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%22200%22%20height%3D%2260%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20200%2060%22%20preserveAspectRatio%3D%22none%22%3E%3Ctext%20x%3D%2210%22%20y%3D%2240%22%20font-family%3D%22sans-serif%22%20font-size%3D%2224%22%20font-weight%3D%22bold%22%20fill%3D%22%232b2830%22%3E1000%20Copias%3C%2Ftext%3E%3C%2Fsvg%3E';">
+            </a>
+            <nav>
+                <ul>
+                    <li><a href="#nosotros">Nosotros</a></li>
+                    <li><a href="#servicios">Servicios</a></li>
+                    <li><a href="#locales">Locales</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero" id="inicio">
+            <img src="logo.png" alt="1000 Copias Logo" class="hero-logo" onerror="this.src='data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%22600%22%20height%3D%22180%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20600%20180%22%20preserveAspectRatio%3D%22none%22%3E%3Crect%20width%3D%22100%25%22%20height%3D%22100%25%22%20fill%3D%22transparent%22%2F%3E%3Ctext%20x%3D%2250%25%22%20y%3D%2250%25%22%20font-family%3D%22sans-serif%22%20font-size%3D%2270%22%20font-weight%3D%22bold%22%20text-anchor%3D%22middle%22%20fill%3D%22%23e98c15%22%3E1000%20COPIAS%3C%2Ftext%3E%3C%2Fsvg%3E';">
+            <h1>Centro de Copiado e Impresión</h1>
+            <p>Soluciones integrales de copiado, insumos de oficina y artículos de librería comercial y técnica para empresas y particulares.</p>
+            <a href="#locales" class="btn">Visitar Locales</a>
+        </section>
+
+        <section id="nosotros" class="fade-up">
+            <h2>Quiénes Somos</h2>
+            <div class="nosotros-content">
+                <p>Somos una empresa en constante crecimiento que, desde 2005, provee a una gran cantidad de <strong>empresas</strong> desde nuestra oficina en zona norte.</p>
+                <p>En mayo de 2009 abrimos nuestro local en la localidad de <strong>Villa Martelli</strong>, Vicente López, ofreciendo toda la línea gráfica tanto en papel como en vinilo.</p>
+                <p>Hacia finales del 2025 abrimos nuestro local en CABA (<strong>Villa Devoto</strong>), sumando a la línea gráfica artículos de librería comercial, escolar y técnica.</p>
+                <br>
+                <p><strong>Nuestro Objetivo:</strong> Brindarle una solución a sus requerimientos de copiado, insumos de oficina o cualquier trabajo que se relacione directa o indirectamente con todos los servicios digitales e insumos con los que contamos.</p>
+                <p>Lo retiramos de su empresa o lo recepcionamos vía e-mail / whatsapp ya que contamos con máquinas con conectividad para hacer aún más rápido la entrega.</p>
+                <p><em>Realizamos Facturas A y B. Contamos con cuentas corrientes para empresas habilitadas.</em></p>
+            </div>
+        </section>
+
+        <section id="servicios" class="fade-up">
+            <div class="container-inner">
+                <h2>Nuestros Servicios</h2>
+                <div class="servicios-grid">
+                    <div class="servicio-card">
+                        <h3>Fotocopias</h3>
+                        <p>B/N y Color, láser y digital de alta calidad.</p>
+                    </div>
+                    <div class="servicio-card">
+                        <h3>Impresiones</h3>
+                        <p>Digitales, Color y B/N. Ploteos de Planos CAD.</p>
+                    </div>
+                    <div class="servicio-card">
+                        <h3>Librería</h3>
+                        <p>Comercial, escolar y técnica. Insumos de oficina.</p>
+                    </div>
+                    <div class="servicio-card">
+                        <h3>Terminaciones</h3>
+                        <p>Espiralados, plastificados, digitalización de documentos.</p>
+                    </div>
+                </div>
+                <ul style="text-align: center; list-style: none; color: var(--color-hueso); opacity: 0.8; font-size: 0.95rem; margin-top: 20px;">
+                    <li>Tarjetas Personales - Sellos - Trabajos de Diseño - Vinilo de Corte e Impresión - Lonas - Banners - Talonarios AFIP - Insumos de Computación - Imanes - Estampados</li>
+                </ul>
+            </div>
+        </section>
+
+        <section id="locales" class="fade-up">
+            <h2>Nuestros Locales</h2>
+            <div class="locales-grid">
+                
+                <div class="local-card fade-up">
+                    <img src="local-martelli.jpg" alt="Local Villa Martelli" class="local-img" onerror="this.src='data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%22800%22%20height%3D%22400%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20800%20400%22%20preserveAspectRatio%3D%22none%22%3E%3Crect%20width%3D%22100%25%22%20height%3D%22100%25%22%20fill%3D%22%23eee%22%2F%3E%3Ctext%20x%3D%2250%25%22%20y%3D%2250%25%22%20font-family%3D%22sans-serif%22%20font-size%3D%2220%22%20text-anchor%3D%22middle%22%20fill%3D%22%23aaa%22%3EFoto%20Villa%20Martelli%3C%2Ftext%3E%3C%2Fsvg%3E';">
+                    <div class="local-body">
+                        <h3>Villa Martelli</h3>
+                        <p><i class="fas fa-map-marker-alt"></i> Av Mitre 288, Vicente López</p>
+                        <p><i class="fas fa-phone-alt"></i> 4878 6803</p>
+                        
+                        <div class="botones-contacto">
+                            <a href="https://wa.me/5491138078081" target="_blank" class="btn-social btn-wa">
+                                <i class="fab fa-whatsapp"></i> 11 3807 8081
+                            </a>
+                            <a href="https://www.instagram.com/copiasmil/" target="_blank" class="btn-social btn-ig">
+                                <i class="fab fa-instagram"></i> @copiasmil
+                            </a>
+                        </div>
+                        
+                        <div class="mapa-container">
+                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3286.0968984922336!2d-58.508552!3d-34.5510619!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95bcb71b3e9a7e3d%3A0xc3f1f3a531d044f5!2sAv.%20Bartolom%C3%A9%20Mitre%20288%2C%20Villa%20Martelli%2C%20Provincia%20de%20Buenos%20Aires!5e0!3m2!1ses-419!2sar!4v1700000000000!5m2!1ses-419!2sar" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                        </div>
+                        <a href="https://maps.google.com/?q=Av.+Mitre+288,+Villa+Martelli,+Vicente+Lopez,+Buenos+Aires" target="_blank" class="btn-mapa">Abrir en Google Maps</a>
+                    </div>
+                </div>
+
+                <div class="local-card fade-up">
+                    <img src="local-devoto.jpg" alt="Local Villa Devoto" class="local-img" onerror="this.src='data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%22800%22%20height%3D%22400%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20800%20400%22%20preserveAspectRatio%3D%22none%22%3E%3Crect%20width%3D%22100%25%22%20height%3D%22100%25%22%20fill%3D%22%23eee%22%2F%3E%3Ctext%20x%3D%2250%25%22%20y%3D%2250%25%22%20font-family%3D%22sans-serif%22%20font-size%3D%2220%22%20text-anchor%3D%22middle%22%20fill%3D%22%23aaa%22%3EFoto%20Villa%20Devoto%3C%2Ftext%3E%3C%2Fsvg%3E';">
+                    <div class="local-body">
+                        <h3>Villa Devoto</h3>
+                        <p><i class="fas fa-map-marker-alt"></i> Av Francisco Beiró 4497, CABA</p>
+                        <p><i class="fas fa-info-circle"></i> Art. Librería comercial, escolar y técnica</p>
+                        
+                        <div class="botones-contacto">
+                            <a href="https://wa.me/5491176101000" target="_blank" class="btn-social btn-wa">
+                                <i class="fab fa-whatsapp"></i> 11 7610 1000
+                            </a>
+                            <a href="https://www.instagram.com/milcopiasdevoto/" target="_blank" class="btn-social btn-ig">
+                                <i class="fab fa-instagram"></i> @milcopiasdevoto
+                            </a>
+                        </div>
+
+                        <div class="mapa-container">
+                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3283.670278788481!2d-58.519213!3d-34.612497!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95bcb7d393d2547b%3A0x6fb837a2f5f190a6!2sAv.%20Francisco%20Beir%C3%B3%204497%2C%20C1419HXF%20Cdad.%20Aut%C3%B3noma%20de%20Buenos%20Aires!5e0!3m2!1ses-419!2sar!4v1700000000000!5m2!1ses-419!2sar" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                        </div>
+                        <a href="https://maps.google.com/?q=Av.+Francisco+Beiro+4497,+CABA,+Buenos+Aires" target="_blank" class="btn-mapa">Abrir en Google Maps</a>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 1000 Copias. Todos los derechos reservados.</p>
+    </footer>
+
+    <script>
+        const header = document.querySelector('header');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > window.innerHeight - 150) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+
+        const faders = document.querySelectorAll('.fade-up');
+        const appearOptions = {
+            threshold: 0.15,
+            rootMargin: "0px 0px -50px 0px"
+        };
+
+        const appearOnScroll = new IntersectionObserver(function(entries, observer) {
+            entries.forEach(entry => {
+                if (!entry.isIntersecting) {
+                    return;
+                } else {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, appearOptions);
+
+        faders.forEach(fader => {
+            appearOnScroll.observe(fader);
+        });
+    </script>
+</body>
+</html>
