@@ -14,13 +14,10 @@
     <meta property="og:description" content="Servicios integrales de copiado e impresión en dos locales estratégicos. Fotocopias color y B/N, planos, librería y más.">
     <meta property="og:image" content="logo.png">
     <meta property="og:url" content="https://1000copias.com.ar/">
-    
-    <!-- PRECARGA DE IMAGEN DE FONDO PARA MAYOR VELOCIDAD -->
     <link rel="preload" as="image" href="fondo-hero.jpg">
-    
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <style>
@@ -41,13 +38,11 @@
             background-color: var(--color-hueso);
             color: var(--color-gris-oscuro);
             line-height: 1.6;
-            overflow-x: hidden;
         }
         a {
             text-decoration: none;
             color: inherit;
         }
-        
         header {
             background-color: var(--color-hueso);
             box-shadow: 0 2px 10px rgba(0,0,0,0.1);
@@ -68,6 +63,7 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
+            flex-wrap: wrap;
         }
         .logo {
             height: 40px;
@@ -76,6 +72,8 @@
             display: flex;
             list-style: none;
             gap: 30px;
+            flex-wrap: wrap;
+            justify-content: center;
         }
         nav a {
             font-weight: 700;
@@ -87,7 +85,6 @@
         nav a:hover {
             color: var(--color-naranja);
         }
-        
         section {
             padding: 80px 20px;
             max-width: 1200px;
@@ -96,17 +93,16 @@
         h2 {
             font-size: 2.5rem;
             text-align: center;
-            margin-bottom: 40px;
+            margin-bottom: 50px;
             color: var(--color-naranja);
+            font-weight: 800;
         }
-        
         .hero {
             height: 100vh;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            /* Se aplica tu imagen de fondo local */
             background-image: linear-gradient(rgba(43, 40, 48, 0.85), rgba(43, 40, 48, 0.85)), url('fondo-hero.jpg');
             background-size: cover;
             background-position: center;
@@ -140,7 +136,6 @@
             opacity: 0;
             animation: slideUp 0.8s ease-out 0.9s forwards;
         }
-        
         @keyframes scaleFadeIn {
             from { transform: scale(0.8); opacity: 0; }
             to { transform: scale(1); opacity: 1; }
@@ -158,7 +153,6 @@
             opacity: 1;
             transform: translateY(0);
         }
-        
         .btn {
             background-color: var(--color-naranja);
             color: var(--color-gris-oscuro);
@@ -179,19 +173,90 @@
             border-color: var(--color-gris-oscuro);
         }
         
-        .nosotros-content {
+        .nosotros-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: start;
+        }
+        .historia-timeline {
+            border-left: 4px solid var(--color-naranja);
+            padding-left: 30px;
+            margin-left: 10px;
+        }
+        .hito {
+            position: relative;
+            margin-bottom: 40px;
+        }
+        .hito:last-child {
+            margin-bottom: 0;
+        }
+        .hito::before {
+            content: '';
+            position: absolute;
+            left: -42px;
+            top: 0;
+            width: 20px;
+            height: 20px;
             background-color: var(--color-blanco);
-            padding: 40px;
+            border: 4px solid var(--color-naranja);
+            border-radius: 50%;
+        }
+        .hito-fecha {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--color-naranja);
+            margin-bottom: 10px;
+            line-height: 1;
+        }
+        .hito p {
+            font-size: 1.05rem;
+            color: var(--color-gris-oscuro);
+        }
+        .nosotros-tarjetas {
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+        }
+        .objetivo-card {
+            background-color: var(--color-gris-oscuro);
+            color: var(--color-hueso);
+            padding: 35px;
             border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
-            text-align: center;
-            border-bottom: 5px solid var(--color-naranja);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.15);
         }
-        .nosotros-content p {
+        .objetivo-card h3 {
+            color: var(--color-naranja);
+            font-size: 1.6rem;
             margin-bottom: 15px;
-            font-size: 1.1rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
         }
-        
+        .objetivo-card p {
+            font-size: 1.05rem;
+            line-height: 1.7;
+        }
+        .facturacion-card {
+            background-color: rgba(233, 140, 21, 0.08);
+            border: 2px dashed var(--color-naranja);
+            padding: 25px;
+            border-radius: 15px;
+            display: flex;
+            align-items: flex-start;
+            gap: 20px;
+        }
+        .facturacion-card i {
+            color: var(--color-naranja);
+            font-size: 2rem;
+            margin-top: 5px;
+        }
+        .facturacion-card p {
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--color-gris-oscuro);
+        }
+
         #servicios {
             background-color: var(--color-gris-oscuro);
             color: var(--color-hueso);
@@ -206,12 +271,12 @@
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 30px;
-            margin-bottom: 30px;
+            margin-bottom: 40px;
         }
         .servicio-card {
             background-color: rgba(244, 241, 234, 0.05);
-            padding: 30px 20px;
-            border-radius: 10px;
+            padding: 40px 20px;
+            border-radius: 15px;
             text-align: center;
             transition: transform 0.3s, box-shadow 0.3s, border-color 0.3s;
             border: 1px solid rgba(233, 140, 21, 0.2);
@@ -224,12 +289,11 @@
         .servicio-card h3 {
             color: var(--color-naranja);
             margin-bottom: 15px;
-            font-size: 1.3rem;
+            font-size: 1.4rem;
         }
-        
         .locales-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
             gap: 40px;
         }
         .local-card {
@@ -258,21 +322,22 @@
             margin-bottom: 15px;
             border-bottom: 2px solid var(--color-hueso);
             padding-bottom: 10px;
+            font-weight: 800;
         }
         .local-body p {
-            margin-bottom: 10px;
+            margin-bottom: 12px;
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 12px;
             color: var(--color-gris-oscuro);
+            font-weight: 500;
         }
         .local-body p i {
             color: var(--color-naranja);
-            font-size: 1.2rem;
+            font-size: 1.3rem;
             width: 25px;
             text-align: center;
         }
-        
         .botones-contacto {
             display: flex;
             flex-direction: column;
@@ -284,7 +349,7 @@
             align-items: center;
             justify-content: center;
             gap: 10px;
-            padding: 12px 20px;
+            padding: 14px 20px;
             border-radius: 8px;
             font-weight: 700;
             text-transform: uppercase;
@@ -294,10 +359,9 @@
             color: var(--color-hueso);
             font-size: 0.95rem;
             border: 2px solid var(--color-gris-oscuro);
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
         }
         .btn-social i {
-            font-size: 1.3rem;
+            font-size: 1.4rem;
         }
         .btn-wa:hover {
             background-color: #25D366;
@@ -313,27 +377,24 @@
             transform: translateY(-3px);
             box-shadow: 0 6px 12px rgba(220, 39, 67, 0.3);
         }
-        
         .mapa-container {
             width: 100%;
-            height: 250px; /* Altura estricta para iOS */
+            height: 250px;
             min-height: 250px;
             border-radius: 10px;
             overflow: hidden;
-            margin-top: 20px;
+            margin-top: auto;
             border: 2px solid var(--color-hueso);
-            position: relative; /* Clave para iframe absoluto */
+            position: relative;
             z-index: 1;
         }
-        
-        /* El div protector que evita que te trabes al scrollear en celular */
         .mapa-overlay {
             position: absolute;
             top: 0; left: 0; width: 100%; height: 100%;
             z-index: 10;
             cursor: pointer;
+            background: rgba(0,0,0,0.01);
         }
-
         .mapa-container iframe {
             position: absolute;
             top: 0;
@@ -343,7 +404,6 @@
             border: none;
             z-index: 5;
         }
-
         .btn-mapa {
             display: block;
             text-align: center;
@@ -360,60 +420,46 @@
             background-color: var(--color-gris-oscuro);
             color: var(--color-naranja);
         }
-        
         footer {
             background-color: var(--color-gris-oscuro);
             color: var(--color-hueso);
             text-align: center;
-            padding: 30px;
+            padding: 40px 20px;
             border-top: 5px solid var(--color-naranja);
         }
-        
         @media (max-width: 768px) {
             .nav-container {
                 flex-direction: column;
-                padding: 15px 10px;
-                gap: 15px;
-            }
-            .nav-container nav ul {
-                flex-wrap: wrap; /* Evita que los botones salgan de la pantalla */
-                justify-content: center;
+                padding: 15px;
                 gap: 15px;
             }
             .hero-logo {
-                width: 80%; /* Más espacio lateral */
-                max-width: 350px;
+                width: 320px;
             }
             .hero h1 {
                 font-size: 1.6rem;
             }
             .hero p {
                 font-size: 1rem;
-                padding: 0 10px;
             }
             h2 {
                 font-size: 2rem;
             }
-            
-            /* Ajuste de espaciados para no ser tan "estrecho" */
             section {
                 padding: 60px 15px;
             }
             #servicios {
                 padding: 60px 15px;
             }
-            .nosotros-content {
-                padding: 30px 20px;
+            .nosotros-grid {
+                grid-template-columns: 1fr;
+                gap: 40px;
             }
             .locales-grid {
                 grid-template-columns: 1fr;
-                gap: 30px; /* Menos espacio entre tarjetas en vertical */
             }
             .local-body {
-                padding: 25px 20px;
-            }
-            .local-body h3 {
-                font-size: 1.6rem;
+                padding: 20px;
             }
         }
     </style>
@@ -444,14 +490,43 @@
 
         <section id="nosotros" class="fade-up">
             <h2>Quiénes Somos</h2>
-            <div class="nosotros-content">
-                <p>Somos una empresa en constante crecimiento que, desde 2005, provee a una gran cantidad de <strong>empresas</strong> desde nuestra oficina en zona norte.</p>
-                <p>En mayo de 2009 abrimos nuestro local en la localidad de <strong>Villa Martelli</strong>, Vicente López, ofreciendo toda la línea gráfica tanto en papel como en vinilo.</p>
-                <p>Hacia finales del 2025 abrimos nuestro local en CABA (<strong>Villa Devoto</strong>), sumando a la línea gráfica artículos de librería comercial, escolar y técnica.</p>
-                <br>
-                <p><strong>Nuestro Objetivo:</strong> Brindarle una solución a sus requerimientos de copiado, insumos de oficina o cualquier trabajo que se relacione directa o indirectamente con todos los servicios digitales e insumos con los que contamos.</p>
-                <p>Lo retiramos de su empresa o lo recepcionamos vía e-mail / whatsapp ya que contamos con máquinas con conectividad para hacer aún más rápido la entrega.</p>
-                <p><em>Realizamos Facturas A y B. Contamos con cuentas corrientes para empresas habilitadas.</em></p>
+            
+            <div class="nosotros-grid">
+                
+                <div class="historia-timeline">
+                    <div class="hito">
+                        <div class="hito-fecha">2005</div>
+                        <p>Iniciamos como una empresa en constante crecimiento, proveyendo a una gran cantidad de <strong>empresas</strong> desde nuestra oficina original en zona norte.</p>
+                    </div>
+                    
+                    <div class="hito">
+                        <div class="hito-fecha">Mayo 2009</div>
+                        <p>Abrimos nuestro local en la localidad de <strong>Villa Martelli</strong> (Vicente López), ofreciendo toda la línea gráfica tanto en papel como en vinilo.</p>
+                    </div>
+
+                    <div class="hito">
+                        <div class="hito-fecha">Fines de 2025</div>
+                        <p>Expandimos nuestra atención abriendo nuestro local en CABA (<strong>Villa Devoto</strong>), sumando a la línea gráfica artículos de librería comercial, escolar y técnica.</p>
+                    </div>
+                </div>
+
+                <div class="nosotros-tarjetas">
+                    <div class="objetivo-card">
+                        <h3><i class="fas fa-bullseye"></i> Nuestro Objetivo</h3>
+                        <p>Brindarle una solución integral a sus requerimientos de copiado, insumos de oficina o cualquier trabajo relacionado directa o indirectamente con todos nuestros servicios digitales.</p>
+                        <br>
+                        <p>Lo retiramos de su empresa o lo recepcionamos vía e-mail / WhatsApp, ya que contamos con máquinas con conectividad para hacer la entrega aún más rápida.</p>
+                    </div>
+
+                    <div class="facturacion-card">
+                        <i class="fas fa-file-invoice-dollar"></i>
+                        <div>
+                            <p>Realizamos Facturas A y B.</p>
+                            <p>Contamos con apertura de <strong>cuentas corrientes</strong> para empresas habilitadas.</p>
+                        </div>
+                    </div>
+                </div>
+
             </div>
         </section>
 
@@ -486,7 +561,6 @@
             <h2>Nuestros Locales</h2>
             <div class="locales-grid">
                 
-                <!-- Local 1 -->
                 <div class="local-card fade-up">
                     <img src="local-martelli.jpg" alt="Local Villa Martelli" class="local-img" onerror="this.src='data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%22800%22%20height%3D%22400%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20800%20400%22%20preserveAspectRatio%3D%22none%22%3E%3Crect%20width%3D%22100%25%22%20height%3D%22100%25%22%20fill%3D%22%23eee%22%2F%3E%3Ctext%20x%3D%2250%25%22%20y%3D%2250%25%22%20font-family%3D%22sans-serif%22%20font-size%3D%2220%22%20text-anchor%3D%22middle%22%20fill%3D%22%23aaa%22%3EFoto%20Villa%20Martelli%3C%2Ftext%3E%3C%2Fsvg%3E';">
                     <div class="local-body">
@@ -503,17 +577,14 @@
                             </a>
                         </div>
                         
-                        <!-- Mapa con fix iOS -->
                         <div class="mapa-container">
-                            <div class="mapa-overlay" onclick="this.style.pointerEvents='none';" title="Tocar para interactuar con el mapa"></div>
-                            <!-- Se quitó loading="lazy" para que renderice seguro en iPhone -->
+                            <div class="mapa-overlay" onclick="this.style.pointerEvents='none';"></div>
                             <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3286.0968984922336!2d-58.508552!3d-34.5510619!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95bcb71b3e9a7e3d%3A0xc3f1f3a531d044f5!2sAv.%20Bartolom%C3%A9%20Mitre%20288%2C%20Villa%20Martelli%2C%20Provincia%20de%20Buenos%20Aires!5e0!3m2!1ses-419!2sar!4v1700000000000!5m2!1ses-419!2sar" allowfullscreen="" referrerpolicy="no-referrer-when-downgrade"></iframe>
                         </div>
                         <a href="https://maps.google.com/?q=Av.+Mitre+288,+Villa+Martelli,+Vicente+Lopez,+Buenos+Aires" target="_blank" class="btn-mapa">Abrir en Google Maps</a>
                     </div>
                 </div>
 
-                <!-- Local 2 -->
                 <div class="local-card fade-up">
                     <img src="local-devoto.jpg" alt="Local Villa Devoto" class="local-img" onerror="this.src='data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%22800%22%20height%3D%22400%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20800%20400%22%20preserveAspectRatio%3D%22none%22%3E%3Crect%20width%3D%22100%25%22%20height%3D%22100%25%22%20fill%3D%22%23eee%22%2F%3E%3Ctext%20x%3D%2250%25%22%20y%3D%2250%25%22%20font-family%3D%22sans-serif%22%20font-size%3D%2220%22%20text-anchor%3D%22middle%22%20fill%3D%22%23aaa%22%3EFoto%20Villa%20Devoto%3C%2Ftext%3E%3C%2Fsvg%3E';">
                     <div class="local-body">
@@ -530,10 +601,8 @@
                             </a>
                         </div>
 
-                        <!-- Mapa con fix iOS -->
                         <div class="mapa-container">
-                            <div class="mapa-overlay" onclick="this.style.pointerEvents='none';" title="Tocar para interactuar con el mapa"></div>
-                            <!-- Se quitó loading="lazy" para que renderice seguro en iPhone -->
+                            <div class="mapa-overlay" onclick="this.style.pointerEvents='none';"></div>
                             <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3283.670278788481!2d-58.519213!3d-34.612497!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95bcb7d393d2547b%3A0x6fb837a2f5f190a6!2sAv.%20Francisco%20Beir%C3%B3%204497%2C%20C1419HXF%20Cdad.%20Aut%C3%B3noma%20de%20Buenos%20Aires!5e0!3m2!1ses-419!2sar!4v1700000000000!5m2!1ses-419!2sar" allowfullscreen="" referrerpolicy="no-referrer-when-downgrade"></iframe>
                         </div>
                         <a href="https://maps.google.com/?q=Av.+Francisco+Beiro+4497,+CABA,+Buenos+Aires" target="_blank" class="btn-mapa">Abrir en Google Maps</a>
@@ -549,7 +618,6 @@
     </footer>
 
     <script>
-        // Efecto scroll en el Header
         const header = document.querySelector('header');
         window.addEventListener('scroll', () => {
             if (window.scrollY > window.innerHeight - 150) {
@@ -559,7 +627,6 @@
             }
         });
 
-        // Animaciones de entrada al scrollear
         const faders = document.querySelectorAll('.fade-up');
         const appearOptions = {
             threshold: 0.15,
