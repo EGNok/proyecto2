@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
     <title>1000 Copias | Centro de Copiado e Impresión en Villa Martelli y Villa Devoto</title>
     <meta name="description" content="1000 Copias: Líder en copiado e impresión en CABA y Zona Norte. Servicios de fotocopias color y B/N, planos CAD, ploteos y artículos de librería. Visítanos en Villa Martelli o Villa Devoto.">
     <meta name="keywords" content="1000 Copias, centro de copiado, imprenta, fotocopias Villa Martelli, fotocopias Devoto, impresión planos, ploteos, librería comercial">
@@ -17,7 +17,7 @@
     <link rel="preload" as="image" href="fondo-hero.jpg">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800;900&family=Open+Sans:wght@400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <style>
@@ -31,13 +31,16 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Montserrat', sans-serif;
             scroll-behavior: smooth;
         }
         body {
             background-color: var(--color-hueso);
             color: var(--color-gris-oscuro);
             line-height: 1.6;
+            font-family: 'Open Sans', sans-serif;
+        }
+        h1, h2, h3, h4, nav a, .btn, .hito-fecha {
+            font-family: 'Montserrat', sans-serif;
         }
         a {
             text-decoration: none;
@@ -86,68 +89,127 @@
             color: var(--color-naranja);
         }
         section {
-            padding: 80px 20px;
+            padding: 100px 20px;
             max-width: 1200px;
             margin: 0 auto;
         }
         h2 {
-            font-size: 2.5rem;
+            font-size: 2.8rem;
             text-align: center;
-            margin-bottom: 50px;
+            margin-bottom: 60px;
             color: var(--color-naranja);
-            font-weight: 800;
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: -1px;
         }
-        .hero {
-            height: 100vh;
+
+        .hero-wrapper {
+            position: relative;
+            width: 100%;
+            min-height: 100vh;
             display: flex;
-            flex-direction: column;
-            justify-content: center;
             align-items: center;
-            background-image: linear-gradient(rgba(43, 40, 48, 0.85), rgba(43, 40, 48, 0.85)), url('fondo-hero.jpg');
+            justify-content: center;
+            overflow: hidden;
+            background-color: var(--color-gris-oscuro);
+            transition: min-height 0.6s cubic-bezier(0.2, 0.8, 0.2, 1);
+        }
+        .hero-wrapper.shrunk {
+            min-height: 45vh;
+        }
+        .hero-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 120%;
+            background-image: url('fondo-hero.jpg');
             background-size: cover;
             background-position: center;
+            z-index: 1;
+            will-change: transform;
+        }
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(43, 40, 48, 0.82);
+            z-index: 2;
+        }
+        .hero-content {
+            position: relative;
+            z-index: 3;
             text-align: center;
             padding: 0 20px;
-            margin-top: 0;
-            max-width: 100%;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
         .hero-logo {
             max-width: 90%;
-            width: 500px;
+            width: 550px;
             margin-bottom: 30px;
-            animation: scaleFadeIn 1s ease-out forwards;
+            animation: scaleFadeIn 1s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+            filter: drop-shadow(0 10px 20px rgba(0,0,0,0.5));
+            transition: width 0.6s cubic-bezier(0.2, 0.8, 0.2, 1), margin-bottom 0.6s cubic-bezier(0.2, 0.8, 0.2, 1);
         }
-        .hero h1 {
-            color: var(--color-naranja);
-            font-size: 2rem;
+        .hero-wrapper.shrunk .hero-logo {
+            width: 320px;
+            margin-bottom: 15px;
+        }
+        .hero-content h1 {
+            color: var(--color-blanco) !important;
+            font-size: 2.2rem;
             margin-bottom: 15px;
             opacity: 0;
-            animation: slideUp 0.8s ease-out 0.5s forwards;
+            animation: slideUp 0.8s cubic-bezier(0.2, 0.8, 0.2, 1) 0.3s forwards;
+            text-shadow: 2px 2px 8px rgba(0,0,0,0.9);
+            transition: font-size 0.6s cubic-bezier(0.2, 0.8, 0.2, 1), margin-bottom 0.6s cubic-bezier(0.2, 0.8, 0.2, 1);
         }
-        .hero p {
-            font-size: 1.2rem;
-            color: var(--color-hueso);
+        .hero-wrapper.shrunk .hero-content h1 {
+            font-size: 1.6rem;
+            margin-bottom: 10px;
+        }
+        .hero-content p {
+            font-size: 1.25rem;
+            color: var(--color-blanco) !important;
             max-width: 800px;
-            margin: 0 auto 30px;
+            margin: 0 auto 35px;
             opacity: 0;
-            animation: slideUp 0.8s ease-out 0.7s forwards;
+            animation: slideUp 0.8s cubic-bezier(0.2, 0.8, 0.2, 1) 0.5s forwards;
+            font-weight: 500;
+            text-shadow: 1px 1px 6px rgba(0,0,0,0.9);
+            transition: font-size 0.6s cubic-bezier(0.2, 0.8, 0.2, 1), margin-bottom 0.6s cubic-bezier(0.2, 0.8, 0.2, 1);
         }
-        .hero .btn {
+        .hero-wrapper.shrunk .hero-content p {
+            font-size: 1rem;
+            margin-bottom: 20px;
+        }
+        .hero-content .btn {
             opacity: 0;
-            animation: slideUp 0.8s ease-out 0.9s forwards;
+            animation: slideUp 0.8s cubic-bezier(0.2, 0.8, 0.2, 1) 0.7s forwards;
+            transition: all 0.6s cubic-bezier(0.2, 0.8, 0.2, 1);
         }
+        .hero-wrapper.shrunk .hero-content .btn {
+            padding: 12px 25px;
+            font-size: 0.95rem;
+        }
+        
         @keyframes scaleFadeIn {
-            from { transform: scale(0.8); opacity: 0; }
-            to { transform: scale(1); opacity: 1; }
+            from { transform: scale(0.7) translateY(20px); opacity: 0; }
+            to { transform: scale(1) translateY(0); opacity: 1; }
         }
         @keyframes slideUp {
-            from { transform: translateY(30px); opacity: 0; }
+            from { transform: translateY(40px); opacity: 0; }
             to { transform: translateY(0); opacity: 1; }
         }
         .fade-up {
             opacity: 0;
             transform: translateY(40px);
-            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+            transition: opacity 0.8s cubic-bezier(0.2, 0.8, 0.2, 1), transform 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
         }
         .fade-up.visible {
             opacity: 1;
@@ -156,27 +218,27 @@
         .btn {
             background-color: var(--color-naranja);
             color: var(--color-gris-oscuro);
-            padding: 15px 35px;
-            border-radius: 30px;
-            font-weight: 700;
+            padding: 18px 40px;
+            border-radius: 50px;
+            font-weight: 800;
             font-size: 1.1rem;
             display: inline-block;
-            transition: transform 0.3s, background-color 0.3s, color 0.3s;
             text-transform: uppercase;
             letter-spacing: 1px;
             border: 2px solid var(--color-naranja);
+            box-shadow: 0 4px 15px rgba(233, 140, 21, 0.4);
         }
         .btn:hover {
-            background-color: var(--color-gris-oscuro);
+            background-color: transparent;
             color: var(--color-naranja);
-            transform: scale(1.05);
-            border-color: var(--color-gris-oscuro);
+            transform: translateY(-4px) scale(1.02);
+            box-shadow: 0 8px 25px rgba(233, 140, 21, 0.6);
         }
-        
+
         .nosotros-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 50px;
+            gap: 60px;
             align-items: start;
         }
         .historia-timeline {
@@ -203,218 +265,246 @@
             border-radius: 50%;
         }
         .hito-fecha {
-            font-size: 1.5rem;
-            font-weight: 800;
+            font-size: 1.8rem;
+            font-weight: 900;
             color: var(--color-naranja);
-            margin-bottom: 10px;
+            margin-bottom: 5px;
             line-height: 1;
         }
         .hito p {
-            font-size: 1.05rem;
+            font-size: 1.1rem;
             color: var(--color-gris-oscuro);
         }
         .nosotros-tarjetas {
             display: flex;
             flex-direction: column;
-            gap: 25px;
+            gap: 30px;
         }
         .objetivo-card {
             background-color: var(--color-gris-oscuro);
             color: var(--color-hueso);
-            padding: 35px;
-            border-radius: 15px;
-            box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.15);
         }
         .objetivo-card h3 {
             color: var(--color-naranja);
-            font-size: 1.6rem;
-            margin-bottom: 15px;
+            font-size: 1.8rem;
+            margin-bottom: 20px;
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 12px;
+            font-weight: 800;
         }
         .objetivo-card p {
             font-size: 1.05rem;
-            line-height: 1.7;
+            line-height: 1.8;
+            margin-bottom: 15px;
         }
+        .objetivo-card p:last-child { margin-bottom: 0; }
         .facturacion-card {
             background-color: rgba(233, 140, 21, 0.08);
             border: 2px dashed var(--color-naranja);
-            padding: 25px;
-            border-radius: 15px;
+            padding: 30px;
+            border-radius: 20px;
             display: flex;
             align-items: flex-start;
             gap: 20px;
         }
         .facturacion-card i {
             color: var(--color-naranja);
-            font-size: 2rem;
+            font-size: 2.2rem;
             margin-top: 5px;
         }
         .facturacion-card p {
-            font-size: 1rem;
+            font-size: 1.1rem;
             font-weight: 700;
             color: var(--color-gris-oscuro);
         }
 
-        #servicios {
+        #servicios-wrapper {
             background-color: var(--color-gris-oscuro);
-            color: var(--color-hueso);
-            max-width: 100%;
-            padding: 100px 20px;
+            width: 100%;
         }
-        #servicios .container-inner {
-            max-width: 1200px;
-            margin: 0 auto;
+        #servicios {
+            color: var(--color-hueso);
         }
         .servicios-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
             gap: 30px;
-            margin-bottom: 40px;
+            margin-bottom: 50px;
         }
         .servicio-card {
-            background-color: rgba(244, 241, 234, 0.05);
-            padding: 40px 20px;
-            border-radius: 15px;
+            background-color: rgba(244, 241, 234, 0.03);
+            padding: 40px 25px;
+            border-radius: 20px;
             text-align: center;
-            transition: transform 0.3s, box-shadow 0.3s, border-color 0.3s;
-            border: 1px solid rgba(233, 140, 21, 0.2);
+            transition: all 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+            border: 1px solid rgba(233, 140, 21, 0.1);
         }
         .servicio-card:hover {
             transform: translateY(-10px);
-            box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.4);
             border-color: var(--color-naranja);
+            background-color: rgba(244, 241, 234, 0.06);
         }
         .servicio-card h3 {
             color: var(--color-naranja);
             margin-bottom: 15px;
-            font-size: 1.4rem;
+            font-size: 1.5rem;
+            font-weight: 800;
         }
+        .servicio-card p {
+            font-size: 1.05rem;
+            color: #ddd;
+        }
+        .lista-extras {
+            text-align: center;
+            list-style: none;
+            color: var(--color-hueso);
+            opacity: 0.75;
+            font-size: 0.95rem;
+            max-width: 900px;
+            margin: 0 auto;
+            line-height: 2;
+        }
+        
         .locales-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 40px;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 50px;
         }
         .local-card {
             background-color: var(--color-blanco);
-            border-radius: 15px;
+            border-radius: 20px;
             overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.08);
             display: flex;
             flex-direction: column;
-            border: 1px solid #ddd;
+            transition: transform 0.3s;
+        }
+        .local-card:hover {
+            transform: translateY(-5px);
         }
         .local-img {
             width: 100%;
-            height: 250px;
+            height: 280px;
             object-fit: cover;
         }
         .local-body {
-            padding: 30px;
+            padding: 40px;
             flex-grow: 1;
             display: flex;
             flex-direction: column;
         }
         .local-body h3 {
             color: var(--color-naranja);
-            font-size: 1.8rem;
-            margin-bottom: 15px;
+            font-size: 2.2rem;
+            margin-bottom: 20px;
             border-bottom: 2px solid var(--color-hueso);
-            padding-bottom: 10px;
-            font-weight: 800;
+            padding-bottom: 15px;
+            font-weight: 900;
         }
-        .local-body p {
-            margin-bottom: 12px;
+        .info-item {
+            margin-bottom: 15px;
             display: flex;
             align-items: center;
-            gap: 12px;
+            gap: 15px;
             color: var(--color-gris-oscuro);
-            font-weight: 500;
+            font-weight: 600;
+            font-size: 1.1rem;
         }
-        .local-body p i {
+        .info-item i {
             color: var(--color-naranja);
-            font-size: 1.3rem;
+            font-size: 1.4rem;
             width: 25px;
             text-align: center;
         }
         .botones-contacto {
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-            margin: 20px 0;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin: 25px 0;
         }
         .btn-social {
-            display: inline-flex;
+            display: flex;
             align-items: center;
             justify-content: center;
             gap: 10px;
-            padding: 14px 20px;
-            border-radius: 8px;
-            font-weight: 700;
+            padding: 14px 10px;
+            border-radius: 12px;
+            font-weight: 800;
             text-transform: uppercase;
             letter-spacing: 0.5px;
             transition: all 0.3s ease;
             background-color: var(--color-gris-oscuro);
             color: var(--color-hueso);
-            font-size: 0.95rem;
-            border: 2px solid var(--color-gris-oscuro);
+            font-size: 0.9rem;
         }
         .btn-social i {
             font-size: 1.4rem;
         }
         .btn-wa:hover {
             background-color: #25D366;
-            border-color: #25D366;
             color: white;
             transform: translateY(-3px);
-            box-shadow: 0 6px 12px rgba(37, 211, 102, 0.3);
+            box-shadow: 0 8px 15px rgba(37, 211, 102, 0.3);
         }
         .btn-ig:hover {
             background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
-            border-color: transparent;
             color: white;
             transform: translateY(-3px);
-            box-shadow: 0 6px 12px rgba(220, 39, 67, 0.3);
+            box-shadow: 0 8px 15px rgba(220, 39, 67, 0.3);
         }
-        .mapa-container {
-            width: 100%;
-            height: 250px;
-            min-height: 250px;
-            border-radius: 10px;
-            overflow: hidden;
-            margin-top: auto;
-            border: 2px solid var(--color-hueso);
+        
+        .mapa-wrapper {
             position: relative;
-            z-index: 1;
+            margin-top: auto;
+            border-radius: 15px;
+            overflow: hidden;
+            border: 2px solid var(--color-hueso);
+            -webkit-overflow-scrolling: touch;
         }
         .mapa-overlay {
             position: absolute;
             top: 0; left: 0; width: 100%; height: 100%;
             z-index: 10;
-            cursor: pointer;
             background: rgba(0,0,0,0.01);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: rgba(255,255,255,0);
+            font-weight: bold;
+            transition: background 0.3s, color 0.3s;
+            cursor: pointer;
         }
-        .mapa-container iframe {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100% !important;
-            height: 100% !important;
+        .mapa-overlay:hover {
+            background: rgba(0,0,0,0.3);
+            color: white;
+        }
+        .mapa-overlay.inactivo {
+            display: none;
+            pointer-events: none;
+        }
+        .mapa-iframe {
+            width: 100%;
+            height: 250px;
             border: none;
-            z-index: 5;
+            display: block;
         }
         .btn-mapa {
             display: block;
             text-align: center;
             background-color: var(--color-naranja);
             color: var(--color-gris-oscuro);
-            padding: 15px;
-            border-radius: 8px;
-            font-weight: 700;
+            padding: 16px;
+            border-radius: 12px;
+            font-weight: 800;
             margin-top: 15px;
-            transition: background-color 0.3s, color 0.3s;
+            transition: all 0.3s;
             text-transform: uppercase;
+            letter-spacing: 1px;
         }
         .btn-mapa:hover {
             background-color: var(--color-gris-oscuro);
@@ -426,40 +516,64 @@
             text-align: center;
             padding: 40px 20px;
             border-top: 5px solid var(--color-naranja);
+            font-size: 0.9rem;
+            opacity: 0.9;
         }
-        @media (max-width: 768px) {
-            .nav-container {
-                flex-direction: column;
-                padding: 15px;
-                gap: 15px;
-            }
-            .hero-logo {
-                width: 320px;
-            }
-            .hero h1 {
-                font-size: 1.6rem;
-            }
-            .hero p {
-                font-size: 1rem;
+
+        @media (max-width: 850px) {
+            section {
+                padding: 70px 20px;
             }
             h2 {
-                font-size: 2rem;
+                font-size: 2.2rem;
+                margin-bottom: 40px;
             }
-            section {
-                padding: 60px 15px;
+            .nav-container {
+                flex-direction: column;
+                padding: 12px;
+                gap: 12px;
             }
-            #servicios {
-                padding: 60px 15px;
-            }
+            nav ul { gap: 15px; }
+            .logo { height: 35px; }
+            
             .nosotros-grid {
                 grid-template-columns: 1fr;
                 gap: 40px;
             }
+            .historia-timeline {
+                padding-left: 20px;
+                margin-left: 5px;
+            }
             .locales-grid {
                 grid-template-columns: 1fr;
+                gap: 40px;
+            }
+            .local-img {
+                height: 200px;
             }
             .local-body {
-                padding: 20px;
+                padding: 25px;
+            }
+            .local-body h3 {
+                font-size: 1.8rem;
+                margin-bottom: 15px;
+            }
+            .botones-contacto {
+                grid-template-columns: 1fr 1fr;
+                gap: 10px;
+                margin: 15px 0;
+            }
+            .btn-social {
+                font-size: 0.8rem;
+                padding: 12px 6px;
+            }
+            .mapa-iframe {
+                height: 200px;
+            }
+        }
+        @media (max-width: 360px) {
+            .botones-contacto {
+                grid-template-columns: 1fr;
             }
         }
     </style>
@@ -481,57 +595,53 @@
     </header>
 
     <main>
-        <section class="hero" id="inicio">
-            <img src="logo.png" alt="1000 Copias Logo" class="hero-logo" onerror="this.src='data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%22600%22%20height%3D%22180%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20600%20180%22%20preserveAspectRatio%3D%22none%22%3E%3Crect%20width%3D%22100%25%22%20height%3D%22100%25%22%20fill%3D%22transparent%22%2F%3E%3Ctext%20x%3D%2250%25%22%20y%3D%2250%25%22%20font-family%3D%22sans-serif%22%20font-size%3D%2270%22%20font-weight%3D%22bold%22%20text-anchor%3D%22middle%22%20fill%3D%22%23e98c15%22%3E1000%20COPIAS%3C%2Ftext%3E%3C%2Fsvg%3E';">
-            <h1>Centro de Copiado e Impresión</h1>
-            <p>Soluciones integrales de copiado, insumos de oficina y artículos de librería comercial y técnica para empresas y particulares.</p>
-            <a href="#locales" class="btn">Visitar Locales</a>
-        </section>
+        <div class="hero-wrapper" id="inicio">
+            <div class="hero-bg"></div>
+            <div class="hero-overlay"></div>
+            <div class="hero-content">
+                <img src="logo.png" alt="1000 Copias Logo" class="hero-logo" onerror="this.src='data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%22600%22%20height%3D%22180%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20600%20180%22%20preserveAspectRatio%3D%22none%22%3E%3Crect%20width%3D%22100%25%22%20height%3D%22100%25%22%20fill%3D%22transparent%22%2F%3E%3Ctext%20x%3D%2250%25%22%20y%3D%2250%25%22%20font-family%3D%22sans-serif%22%20font-size%3D%2270%22%20font-weight%3D%22bold%22%20text-anchor%3D%22middle%22%20fill%3D%22%23e98c15%22%3E1000%20COPIAS%3C%2Ftext%3E%3C%2Fsvg%3E';">
+                <h1>Centro de Copiado e Impresión</h1>
+                <p>Soluciones integrales de copiado, insumos de oficina y artículos de librería comercial y técnica para empresas y particulares.</p>
+                <a href="#locales" class="btn">Visitar Locales</a>
+            </div>
+        </div>
 
         <section id="nosotros" class="fade-up">
             <h2>Quiénes Somos</h2>
-            
             <div class="nosotros-grid">
-                
                 <div class="historia-timeline">
                     <div class="hito">
                         <div class="hito-fecha">2005</div>
                         <p>Iniciamos como una empresa en constante crecimiento, proveyendo a una gran cantidad de <strong>empresas</strong> desde nuestra oficina original en zona norte.</p>
                     </div>
-                    
                     <div class="hito">
                         <div class="hito-fecha">Mayo 2009</div>
                         <p>Abrimos nuestro local en la localidad de <strong>Villa Martelli</strong> (Vicente López), ofreciendo toda la línea gráfica tanto en papel como en vinilo.</p>
                     </div>
-
                     <div class="hito">
                         <div class="hito-fecha">Fines de 2025</div>
                         <p>Expandimos nuestra atención abriendo nuestro local en CABA (<strong>Villa Devoto</strong>), sumando a la línea gráfica artículos de librería comercial, escolar y técnica.</p>
                     </div>
                 </div>
-
                 <div class="nosotros-tarjetas">
                     <div class="objetivo-card">
                         <h3><i class="fas fa-bullseye"></i> Nuestro Objetivo</h3>
                         <p>Brindarle una solución integral a sus requerimientos de copiado, insumos de oficina o cualquier trabajo relacionado directa o indirectamente con todos nuestros servicios digitales.</p>
-                        <br>
                         <p>Lo retiramos de su empresa o lo recepcionamos vía e-mail / WhatsApp, ya que contamos con máquinas con conectividad para hacer la entrega aún más rápida.</p>
                     </div>
-
                     <div class="facturacion-card">
                         <i class="fas fa-file-invoice-dollar"></i>
                         <div>
                             <p>Realizamos Facturas A y B.</p>
-                            <p>Contamos con apertura de <strong>cuentas corrientes</strong> para empresas habilitadas.</p>
+                            <p style="margin-top: 5px; font-weight: normal; font-size: 0.95rem;">Contamos con apertura de <strong>cuentas corrientes</strong> para empresas habilitadas.</p>
                         </div>
                     </div>
                 </div>
-
             </div>
         </section>
 
-        <section id="servicios" class="fade-up">
-            <div class="container-inner">
+        <div id="servicios-wrapper">
+            <section id="servicios" class="fade-up">
                 <h2>Nuestros Servicios</h2>
                 <div class="servicios-grid">
                     <div class="servicio-card">
@@ -548,14 +658,14 @@
                     </div>
                     <div class="servicio-card">
                         <h3>Terminaciones</h3>
-                        <p>Espiralados, plastificados, digitalización de documentos.</p>
+                        <p>Espiralados, plastificados, digitalización.</p>
                     </div>
                 </div>
-                <ul style="text-align: center; list-style: none; color: var(--color-hueso); opacity: 0.8; font-size: 0.95rem; margin-top: 20px;">
+                <ul class="lista-extras">
                     <li>Tarjetas Personales - Sellos - Trabajos de Diseño - Vinilo de Corte e Impresión - Lonas - Banners - Talonarios AFIP - Insumos de Computación - Imanes - Estampados</li>
                 </ul>
-            </div>
-        </section>
+            </section>
+        </div>
 
         <section id="locales" class="fade-up">
             <h2>Nuestros Locales</h2>
@@ -565,8 +675,8 @@
                     <img src="local-martelli.jpg" alt="Local Villa Martelli" class="local-img" onerror="this.src='data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%22800%22%20height%3D%22400%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20800%20400%22%20preserveAspectRatio%3D%22none%22%3E%3Crect%20width%3D%22100%25%22%20height%3D%22100%25%22%20fill%3D%22%23eee%22%2F%3E%3Ctext%20x%3D%2250%25%22%20y%3D%2250%25%22%20font-family%3D%22sans-serif%22%20font-size%3D%2220%22%20text-anchor%3D%22middle%22%20fill%3D%22%23aaa%22%3EFoto%20Villa%20Martelli%3C%2Ftext%3E%3C%2Fsvg%3E';">
                     <div class="local-body">
                         <h3>Villa Martelli</h3>
-                        <p><i class="fas fa-map-marker-alt"></i> Av Mitre 288, Vicente López</p>
-                        <p><i class="fas fa-phone-alt"></i> 4878 6803</p>
+                        <div class="info-item"><i class="fas fa-map-marker-alt"></i> Av Mitre 288, Vicente López</div>
+                        <div class="info-item"><i class="fas fa-phone-alt"></i> 4878 6803</div>
                         
                         <div class="botones-contacto">
                             <a href="https://wa.me/5491138078081" target="_blank" class="btn-social btn-wa">
@@ -577,9 +687,9 @@
                             </a>
                         </div>
                         
-                        <div class="mapa-container">
-                            <div class="mapa-overlay" onclick="this.style.pointerEvents='none';"></div>
-                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3286.0968984922336!2d-58.508552!3d-34.5510619!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95bcb71b3e9a7e3d%3A0xc3f1f3a531d044f5!2sAv.%20Bartolom%C3%A9%20Mitre%20288%2C%20Villa%20Martelli%2C%20Provincia%20de%20Buenos%20Aires!5e0!3m2!1ses-419!2sar!4v1700000000000!5m2!1ses-419!2sar" allowfullscreen="" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                        <div class="mapa-wrapper">
+                            <div class="mapa-overlay" onclick="this.classList.add('inactivo')">Tocar para ver mapa</div>
+                            <iframe class="mapa-iframe" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3286.0968984922336!2d-58.508552!3d-34.5510619!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95bcb71b3e9a7e3d%3A0xc3f1f3a531d044f5!2sAv.%20Bartolom%C3%A9%20Mitre%20288%2C%20Villa%20Martelli%2C%20Provincia%20de%20Buenos%20Aires!5e0!3m2!1ses-419!2sar!4v1700000000000!5m2!1ses-419!2sar" allowfullscreen="" title="Mapa Villa Martelli"></iframe>
                         </div>
                         <a href="https://maps.google.com/?q=Av.+Mitre+288,+Villa+Martelli,+Vicente+Lopez,+Buenos+Aires" target="_blank" class="btn-mapa">Abrir en Google Maps</a>
                     </div>
@@ -589,8 +699,8 @@
                     <img src="local-devoto.jpg" alt="Local Villa Devoto" class="local-img" onerror="this.src='data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%22800%22%20height%3D%22400%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20800%20400%22%20preserveAspectRatio%3D%22none%22%3E%3Crect%20width%3D%22100%25%22%20height%3D%22100%25%22%20fill%3D%22%23eee%22%2F%3E%3Ctext%20x%3D%2250%25%22%20y%3D%2250%25%22%20font-family%3D%22sans-serif%22%20font-size%3D%2220%22%20text-anchor%3D%22middle%22%20fill%3D%22%23aaa%22%3EFoto%20Villa%20Devoto%3C%2Ftext%3E%3C%2Fsvg%3E';">
                     <div class="local-body">
                         <h3>Villa Devoto</h3>
-                        <p><i class="fas fa-map-marker-alt"></i> Av Francisco Beiró 4497, CABA</p>
-                        <p><i class="fas fa-info-circle"></i> Art. Librería comercial, escolar y técnica</p>
+                        <div class="info-item"><i class="fas fa-map-marker-alt"></i> Av Francisco Beiró 4497, CABA</div>
+                        <div class="info-item"><i class="fas fa-info-circle"></i> Art. Librería comercial, escolar...</div>
                         
                         <div class="botones-contacto">
                             <a href="https://wa.me/5491176101000" target="_blank" class="btn-social btn-wa">
@@ -601,9 +711,9 @@
                             </a>
                         </div>
 
-                        <div class="mapa-container">
-                            <div class="mapa-overlay" onclick="this.style.pointerEvents='none';"></div>
-                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3283.670278788481!2d-58.519213!3d-34.612497!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95bcb7d393d2547b%3A0x6fb837a2f5f190a6!2sAv.%20Francisco%20Beir%C3%B3%204497%2C%20C1419HXF%20Cdad.%20Aut%C3%B3noma%20de%20Buenos%20Aires!5e0!3m2!1ses-419!2sar!4v1700000000000!5m2!1ses-419!2sar" allowfullscreen="" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                        <div class="mapa-wrapper">
+                            <div class="mapa-overlay" onclick="this.classList.add('inactivo')">Tocar para ver mapa</div>
+                            <iframe class="mapa-iframe" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3283.670278788481!2d-58.519213!3d-34.612497!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95bcb7d393d2547b%3A0x6fb837a2f5f190a6!2sAv.%20Francisco%20Beir%C3%B3%204497%2C%20C1419HXF%20Cdad.%20Aut%C3%B3noma%20de%20Buenos%20Aires!5e0!3m2!1ses-419!2sar!4v1700000000000!5m2!1ses-419!2sar" allowfullscreen="" title="Mapa Villa Devoto"></iframe>
                         </div>
                         <a href="https://maps.google.com/?q=Av.+Francisco+Beiro+4497,+CABA,+Buenos+Aires" target="_blank" class="btn-mapa">Abrir en Google Maps</a>
                     </div>
@@ -627,10 +737,27 @@
             }
         });
 
+        const heroBg = document.querySelector('.hero-bg');
+        window.addEventListener('scroll', () => {
+            const scrolled = window.scrollY;
+            if(scrolled < window.innerHeight) {
+                heroBg.style.transform = `translateY(${scrolled * 0.35}px) scale(1.15)`;
+            }
+        });
+        
+        const heroWrapper = document.querySelector('.hero-wrapper');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 150) {
+                heroWrapper.classList.add('shrunk');
+            } else {
+                heroWrapper.classList.remove('shrunk');
+            }
+        });
+
         const faders = document.querySelectorAll('.fade-up');
         const appearOptions = {
-            threshold: 0.15,
-            rootMargin: "0px 0px -50px 0px"
+            threshold: 0.1,
+            rootMargin: "0px 0px -40px 0px"
         };
 
         const appearOnScroll = new IntersectionObserver(function(entries, observer) {
